@@ -1,0 +1,26 @@
+* {
+  font-family: monospace;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+a:link, a:active {
+  color: #777777;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #333333;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #777777;
+  background-color: transparent;
+  text-decoration: underline;
+}
