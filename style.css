@@ -1,26 +1,35 @@
+@font-face {
+  font-family: VGA;
+  src: url(fonts/VGAMedium.ttf);
+}
+
 * {
-  font-family: monospace;
+  font-family: VGA;
+}
+
+
+ul li::before {
+  content: "- ";
+
+}
+
+ul {
+  list-style-type: none;
+}
+
+h1 {
+  font-size: 150%;
+}
+
+h1, li, p, pre {
+  color: white;
+  background: url(images/glendatrip.png) no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body {
   background-color: #000000;
-  color: #ffffff;
+  color: #6c67de;
 }
 
-a:link, a:active {
-  color: #777777;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #333333;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #777777;
-  background-color: transparent;
-  text-decoration: underline;
-}
