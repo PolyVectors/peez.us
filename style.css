@@ -3,8 +3,18 @@
   src: url(fonts/VGAMedium.ttf);
 }
 
+@font-face {
+  font-family: sitelenKuwi;
+  src: url(fonts/sitelen.Kuwi.otf);
+}
+
 * {
   font-family: VGA;
+}
+
+.sitelenKuwi {
+  font-family: sitelenKuwi;
+  margin: 0;
 }
 
 
