@@ -14,28 +14,35 @@
 
 .sitelenKuwi {
   font-family: sitelenKuwi;
-  margin: 0;
 }
 
-
-ul li::before {
-  content: "- ";
-
+code {
+  color: white;
+  background: url(images/glendatrip.png) no-repeat;
+  filter: invert();
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 ul {
   list-style-type: none;
 }
 
-h1 {
-  font-size: 150%;
+ul li::before {
+  content: "- ";
 }
 
-h1, li, p, pre {
+h1, h2, h3, li, p, pre, span {
   color: white;
   background: url(images/glendatrip.png) no-repeat;
+  background-size: cover;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+hr {
+  border-color: #111111;
 }
 
 body {
