@@ -7,68 +7,101 @@
     <title>peezus</title>
 </head>
 <body>
-  <h1>building selo <span class="sitelenKuwi">(selo-)</span> Linux <span style="float:right;">29/10/2025</span></h1>
-  <h1 class="sitelenKuwi">nasin-pipali-eselo-LINISU</h1>
+  <div style="max-width:1024px;margin:auto;">
+    <h1>building selo <span class="sitelenKuwi">(selo-)</span> Linux <span style="float:right;">01/11/2025</span></h1>
+    <h1 class="sitelenKuwi">nasin-pipali-eselo-LINISU</h1>
 
-  <p>selo <span class="sitelenKuwi">(selo-)</span> Linux began started as an idea for a Linux distribution that i'd come up with recently. it's born out of a distaste of the status quo, specifically for the disposition of modern software to seeminhly be as technically bloated and cumbersome as possible.</p>
-  <p>i'm not too sure whether this stems from a desire of preceived grandiosity, an accumulation of bad decisions, or something else enirely, but i felt sick of it all.</p>
-  <p><i>also, i am aware that <a href="https://xkcd.com/927/">creating a new Linux distro is a trite idea</a>, but this isn't for you</i>.</p>
+    <p>selo <span class="sitelenKuwi">(selo-)</span> Linux began started as an idea for a Linux distribution that i'd come up with recently. it's born out of a distaste of the status quo, specifically for the disposition of modern software to seeminhly be as technically bloated and cumbersome as possible.</p>
+    <p>i'm not too sure whether this stems from a desire of preceived grandiosity, an accumulation of bad decisions, or something else enirely, but i felt sick of it all.</p>
+    <p><i>also, i am aware that <a href="https://xkcd.com/927/">creating a new Linux distro is a trite idea</a>, but this isn't for you</i>.</p>
 
-  <h2>the "philosophy"</h2>
-  <hr>
+    <h2>the "philosophy"</h2>
+    <hr>
 
-  <p>before i get started, i want to create a set of ground rules to prevent any irratation.</p>
-  <ul>
-    <li>prefer the smallest solution (such that each component can be understood by the average maintainer in a reasonable amount of time)</li>
-    <li>statically link everything</li>
-    <li>always build from source</li>
-    <li>prefer software that adheres to <a href="https://archive.org/details/bstj57-6-1899/page/n3/mode/2up">unix philosophy</a></li>
-    <li>prefer software that's configured at compile-time</li>
-  </ul>
+    <p>before i get started, i want to create a set of ground rules to prevent any irratation.</p>
+    <ul>
+      <li>prefer software with the least amount of code</li>
+      <li>statically link everything</li>
+      <li>always build from source</li>
+      <li>prefer software that adheres to <a href="https://archive.org/details/bstj57-6-1899/page/n3/mode/2up">unix philosophy</a></li>
+      <li>prefer software that's configured at compile-time</li>
+    </ul>
 
-  <p>as with any set of rules, there are going to be exceptions. with this project that's the use of the Linux kernel and the gcc toolchain (the latter can be removed during stage 3).</p>
+    <p>as with any set of rules, there are going to be exceptions. with this project that's the use of the Linux kernel and the gcc toolchain (the latter can be removed during stage 3).</p>
 
-  <h3>inspiration</h3>
-  <hr>
+    <div style="overflow:hidden;">
+      <img src="images/suckless.jpg" title="suckless conference 2019, Bad Liebenzell, Germany" style="float:right; width:25%; height:25%;">
 
-  <p>this project is heavily inspired by the <a href="https://suckless.org/philosophy/">suckless philosophy</a> (which i had subconsciously ripped off while writing the first paragraph, apologies) and especially <a href="https://nyght.neocities.org/about">nyght</a>'s excellent <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a>.</p>
-  <p>i also want to draw attention to <a href="https://glaucuslinux.org/">glaucus Linux</a> for its simple package repository system (i.e. <a href="https://github.com/glaucuslinux/core/">core</a>) as i want to implement something similar for the project's planned package manager, ante <span class="sitelenKuwi">(ante-)</span> (name probably not final).</p>
+      <h3>inspiration</h3>
+      <hr>
 
-  <h2>departures from GNU/Linux</h2>
-  <hr>
+      <p>this project is heavily inspired by the <a href="https://suckless.org/philosophy/">suckless philosophy</a> (which i had subconsciously ripped off while writing the first paragraph, apologies) and especially <a href="https://nyght.neocities.org/about">nyght</a>'s excellent <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a>.</p>
+      <p>i also want to draw attention to <a href="https://glaucuslinux.org/">glaucus Linux</a> for its simple package repository system (i.e. <a href="https://github.com/glaucuslinux/core/">core</a>) as i want to implement something similar for the project's planned package manager, ante <span class="sitelenKuwi">(ante-)</span> (name probably not final).</p>
+    </div>
 
-  <p>selo <span class="sitelenKuwi">(selo-)</span> Linux is fundamentally opposed to the usage of GNU software. this is due to a myriad of reasons, but it mainly boils down to a pattern of exceedingly long and complex code, superfluous and wordy documentation, and <a href="https://stallman-report.org/">some of Richard Stallman's personal beliefs</a>. this is not to discredit the amazing work that the people at his organisation has done, but GNU software simply isn't a fit for selo <span class="sitelenKuwi">(selo-)</span> Linux.</p>
-  <p>as a result of this (and some other factors), there are going to be major changes from your typical Linux-based operating system, the main one being the use of a Plan 9 user space, provided by <a href="https://9fans.github.io/plan9port/">plan9port</a>.</p>
+    <h2>departures from GNU/Linux</h2>
+    <hr>
 
-  <h3>Plan 9 userland</h3>
-  <hr>
+    <p>selo <span class="sitelenKuwi">(selo-)</span> Linux is fundamentally opposed to the usage of GNU software. this is due to a myriad of reasons, but it mainly boils down to a pattern of exceedingly long and complex code, superfluous and wordy documentation, and <a href="https://stallman-report.org/">some of Richard Stallman's personal beliefs</a>. this is not to discredit the amazing work that the people at his organisation has done, but GNU software simply isn't a fit for selo <span class="sitelenKuwi">(selo-)</span> Linux.</p>
+    <p>as a result of this (and some other factors), there are going to be major changes from your typical Linux-based operating system, the main one being the use of a Plan 9 user space, provided by <a href="https://9fans.github.io/plan9port/">plan9port</a>.</p>
 
-  <p><a href="http://p9f.org/about.html">Plan 9</a> is an operating system that iterates on the UNIX philosophy, but not as much as something like <a href="https://www.inferno-os.org/inferno/">Inferno</a>, therefore the commands provided should feel similar to most Linux users. its user space is used in this project as it's source code is of excellent quality, concise, and extension-free. however, one especially radical difference is the shell implementation, rc, which has a completely different syntax compared to typical Linux shells like sh, bash, or zsh.</p>
-  <p><i>if you're interested in a more true to form version of Plan 9, it lives on today as <a href="http://www.9front.org/releases/">9front</a>, try it out.</i></p>
+    <div style="overflow:hidden;">
+      <img src="images/glenda.jpg" title="Glenda from Outer Space" style="float:left;">
+
+      <h3>Plan 9 userland</h3>
+      <hr>
+
+      <p><a href="http://p9f.org/about.html">Plan 9</a> (Plan 9 from Bell Labs) is an operating system that iterates on the UNIX philosophy, but not as much as something like <a href="https://www.inferno-os.org/inferno/">Inferno</a>, therefore the commands provided should feel similar to most Linux users. its user space is used in this project as it's source code is of excellent quality, concise, and extension-free. however, one especially radical difference is the shell implementation, rc, which has a completely different syntax compared to typical Bourne-like shells such as sh, bash, or zsh.</p>
+      <p><i>if you're interested in a more true to form version of Plan 9, it lives on today as <a href="http://www.9front.org/releases/">9front</a>, give it a go.</i></p>
   
-  <h3>Plan 9 libc and musl libc</h3>
-  <hr>
+      <h3>Plan 9 libc and musl libc</h3>
+      <hr>
 
-  <p>Plan 9's libc is the primary libc for selo <span class="sitelenKuwi">(selo-)</span> Linux and musl libc is used as a fallback. as a consequence, this eliminates the possibility of using the proprietary NVIDIA driver; however, the <a href="https://nouveau.freedesktop.org/">Nouveau</a> open source driver is a brilliant alternative and this distro isn't necessarily intended for graphically-intensive workloads/gaming.</p>
+      <p>Plan 9's libc is the primary libc for selo <span class="sitelenKuwi">(selo-)</span> Linux and musl libc is used as a fallback. as a consequence, this eliminates the possibility of using the proprietary NVIDIA driver; besides, the <a href="https://nouveau.freedesktop.org/">Nouveau</a> open source driver is a brilliant alternative and this distro isn't necessarily intended for graphically-intensive workloads/gaming.</p>
+    </div>
 
-  <h2>getting started</h2>
-  <hr>
+    <h2>building the system - prerequisites</h2>
+    <hr>
 
-  <p>this is the portion of the article that's espicially derivative of <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a> where i'll start crafting a working operating system from the ground up. by the time you're reading this, you (probably) won't have to do this and a stage 3 archive for your processor's architecture should be available somewhere for you to download.</p>
-  <p>by the way, this section only really exists as a reference to my future self on how to build the system, but if you're curious, you're of course welcome to read (or even follow) along.</p>
+    <p>this is the portion of the article that's espicially derivative of <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a>, where i'll start crafting a working operating system from the ground up. by the time you're reading this, you (probably) won't have to do this and a stage 3 tarball for your processor's architecture should be available somewhere for you to download.</p>
+    <p><i>as an aside, this section only really exists as a reference to my future self on how to build the system, but if you're curious, you're of course welcome to read (or even follow) along.</i></p>
 
-  <h3>stage 1 (bootstrap)</h3>
-  <hr>
+    <h2>building the system - stage 1 (bootstrap)</h2>
+    <hr>
 
-  <p>W.I.P.</p>
+    <p>for this step, you'll need a few things:</p>
+    <ul>
+      <li>a reasonably POSIX-compliant shell (e.g. bash, sh, dash, etc.)</li>
+      <li>a set of comprehensive coreutils (e.g. GNU, busybox, toybox, sbase, etc.)</li>
+      <li>a set of general purpose utilities (e.g. util-linux, ubase.)</li>
+      <li>a file downloader w/ HTTP(S) support (e.g. curl, tinycurl, wget, etc.)</li>
+      <li>a tar archive extractor (i.e. tar)</li>
+      <li>a git client (i.e. git)</li>
+    </ul>
+
+    <p><i>for this installation, i'll be using <a href="https://www.linuxmint.com/">Linux Mint</a> as the bootstrapping environment because i'm lazy.</i></p>
+
+    <h3>1.1 - configuring the disk(s)</h3>
+    <hr>
+
+    <p>as is true with any typical Linux installation, the first step will be to partition and format the disks. because this is Linux, you can go about this in a few ways; i'll trust that if you're reading this, you've done something like before and not bore you with the details.</p>
+    <p>once you've partitioned and formatted your disk(s), mount the root partition somewhere on your live environment (<i>i'll be using /mnt</i>).</p>
+    
+    <h3>1.2 - fleshing out root</h3>
+    <hr>
+
+    <p>similar to <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a>, selo <span class="sitelenKuwi">(selo-)</span> Linux uses a simplified FHS so you might notice some otherwise key directories in other distros (like /sbin and /usr ) missing.</p>
+
+    <p>W.I.P.</p>
   
-  <h3>stage 2 (cross compilation)</h3>
-  <hr>
+    <h2>stage 2 (cross compilation)</h2>
+    <hr>
   
-  <p>W.I.P.</p>
+    <p>W.I.P.</p>
   
-  <h3>stage 3 (native compilation)</h3>
-  <hr>
+    <h2>stage 3 (native compilation)</h2>
+    <hr>
 
-  <p>W.I.P.</p>
+    <p>W.I.P.</p>
+  </div>
 </body>

@@ -16,13 +16,30 @@
   font-family: sitelenKuwi;
 }
 
-code {
-  color: white;
+a {
   background: url(images/glendatrip.png) no-repeat;
-  filter: invert();
   background-size: cover;
+  filter: hue-rotate(90deg);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+a:hover {
+  background: url(images/glendatrip.png) no-repeat;
+  background-size: cover;
+  filter: hue-rotate(270deg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+img {
+  background: url(images/glendatrip.png) no-repeat;
+  background-size: cover;
+  background-origin: border-box;
+  margin: 16px;
+  border: 2px solid;
+  border-color: transparent;
+  -webkit-background-clip: border-area;
 }
 
 ul {
@@ -33,7 +50,7 @@ ul li::before {
   content: "- ";
 }
 
-h1, h2, h3, li, p, pre, span {
+h1, h2, h3, h4, li, p, pre, span {
   color: white;
   background: url(images/glendatrip.png) no-repeat;
   background-size: cover;
