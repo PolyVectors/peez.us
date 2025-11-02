@@ -36,7 +36,7 @@
       <hr>
 
       <div style="text-align:right;">
-        <p>this project is heavily inspired by the <a href="https://suckless.org/philosophy/">suckless philosophy</a> (which i had subconsciously ripped off while writing the first paragraph, apologies) and especially <a href="https://nyght.neocities.org/about">nyght</a>'s excellent <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a>.</p>
+        <p>this project is heavily inspired by the <a href="https://suckless.org/philosophy/">suckless philosophy</a> (which i had subconsciously ripped off while writing the first paragraph, apologies) and especially <a href="https://nyght.neocities.org/about">nyght</a>'s excellent <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">Suckless From Scratch</a>.</p>
         <p>i also want to draw attention to <a href="https://glaucuslinux.org/">glaucus Linux</a> for its simple package repository system (i.e. <a href="https://github.com/glaucuslinux/core/">core</a>) as i want to implement something similar for the project's planned package manager, ante <span class="sitelenKuwi">(ante-)</span> (name probably not final).</p>
       </div>
     </div>
@@ -62,13 +62,18 @@
       <p>Plan 9's libc is the primary libc for selo <span class="sitelenKuwi">(selo-)</span> Linux and musl libc is used as a fallback. as a consequence, this eliminates the possibility of using the proprietary NVIDIA driver; besides, the <a href="https://nouveau.freedesktop.org/">Nouveau</a> open source driver is a brilliant alternative and this distro isn't necessarily intended for graphically-intensive workloads/gaming.</p>
     </div>
 
+    <h3>simplified FHS (Filesystem Hierarchy Standard)</h3>
+    <hr>
+
+    <p>there is no /usr, /sbin, /media, /run, or /srv directories. this is because selo <span class="sitelenKuwi">(selo-)</span> Linux is primarily an exercise in minimalism and these directories are simply not necessary for the functionality of the system.</p>
+
     <h2>building the system - prerequisites</h2>
     <hr>
 
-    <p>this is the portion of the article that's espicially derivative of <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a>, where i'll start crafting a working operating system from the ground up. by the time you're reading this, you (probably) won't have to do this and a stage 3 tarball for your processor's architecture should be available somewhere for you to download.</p>
+    <p>this is the portion of the article that's especially derivative of <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">Suckless From Scratch</a> and <a href="https://www.linuxfromscratch.org/lfs/downloads/stable/LFS-BOOK-12.4.pdf">Linux From Scratch</a>, where i'll start crafting a working operating system from the ground up. by the time you're reading this, you (probably) won't have to do this and a stage 3 tarball for your processor's architecture should be available somewhere for you to download.</p>
     <p><i>as an aside, this section only really exists as a reference to my future self on how to build the system, but if you're curious, you're of course welcome to read (or even follow) along.</i></p>
 
-    <h2>building the system - stage 1 (bootstrap)</h2>
+    <h2>building the system - stage 1 (toolchain)</h2>
     <hr>
 
     <p>for this step, you'll need a few things:</p>
@@ -89,19 +94,33 @@
     <p>as is true with any typical Linux installation, the first step will be to partition and format the disks. because this is Linux, you can go about this in a few ways; i'll trust that if you're reading this, you've done something like before and not bore you with the details.</p>
     <p>once you've partitioned and formatted your disk(s), mount the root partition somewhere on your live environment (<i>i'll be using /mnt</i>).</p>
     
-    <h3>1.2 - fleshing out root</h3>
+    <h3>1.2 - fleshing out the root directory</h3>
     <hr>
 
-    <p>similar to <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">suckless from scratch</a>, selo <span class="sitelenKuwi">(selo-)</span> Linux uses a simplified FHS so you might notice some otherwise key directories in other distros (like /sbin and /usr ) missing.</p>
+    <p>use the following shell command to recursively create the root subdirectories of the system:</p>
+    <pre><code>mkdir -p /mnt/{proc,dev,sys,tmp,root,lib,include,bin,etc/ssl/certs} \
+         /mnt/var/cache/ante/{recipies,sources}</code></pre>
+          
+    <p>since this distro doesn't use (e)udev, you'll need to create the character special device files yourself:</p>
+    <pre><code>mknod -m 600 /mnt/dev/console c 5 1
+mknod -m 666 /mnt/dev/null c 1 3
+mknod -m 666 /mnt/dev/zero c 1 5
+mknod -m 666 /mnt/dev/random c 1 8
+mknod -m 666 /mnt/dev/urandom c 1 9</code></pre>
+
+    <p><i>if you're curious about where exactly some of these magic numbers come from, see mknod(1), null(4), and random(4). as for console, i have no idea.</i></p>
+
+    <h3>1.3 - getting a toolchain</h3>
+    <hr>
 
     <p>W.I.P.</p>
   
-    <h2>stage 2 (cross compilation)</h2>
+    <h2>building the system - stage 2 (cross compilation)</h2>
     <hr>
   
     <p>W.I.P.</p>
   
-    <h2>stage 3 (native compilation)</h2>
+    <h2>building the system - stage 3 (native compilation)</h2>
     <hr>
 
     <p>W.I.P.</p>

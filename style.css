@@ -24,7 +24,7 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
-a:hover {
+a:hover, code {
   background: url(images/glendatrip.png) no-repeat;
   background-size: cover;
   filter: hue-rotate(270deg);
