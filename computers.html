@@ -99,7 +99,7 @@
 
     <p>use the following shell command to recursively create the root subdirectories of the system:</p>
     <pre><code>mkdir -p /mnt/{proc,dev,sys,tmp,root,lib,include,bin,etc/ssl/certs} \
-         /mnt/var/cache/ante/{recipies,sources}</code></pre>
+         /mnt/var/cache/ante/{recipes,sources}</code></pre>
           
     <p>since this distro doesn't use (e)udev, you'll need to create the character special device files yourself:</p>
     <pre><code>mknod -m 600 /mnt/dev/console c 5 1
