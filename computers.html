@@ -8,10 +8,10 @@
 </head>
 <body>
   <div style="max-width:1024px;margin:auto;">
-    <h1>building selo <span class="sitelenKuwi">(selo-)</span> Linux <span style="float:right;">01/11/2025</span></h1>
-    <h1 class="sitelenKuwi">nasin-pipali-eselo-LINISU</h1>
+    <h1>building selo (<span class="tokipona">selo</span>) Linux <span style="float:right;">01/11/2025</span></h1>
+    <h1 class="tokipona">nasin pi(pali e ni): [linja insa nimi insa supa utala] selo</h1>
 
-    <p>selo <span class="sitelenKuwi">(selo-)</span> Linux began started as an idea for a Linux distribution that i'd come up with recently. it's born out of a distaste of the status quo, specifically for the disposition of modern software to seeminhly be as technically bloated and cumbersome as possible.</p>
+    <p>selo (<span class="tokipona">selo</span>) Linux began started as an idea for a Linux distribution that i'd come up with recently. it's born out of a distaste of the status quo, specifically for the disposition of modern software to seeminhly be as technically bloated and cumbersome as possible.</p>
     <p>i'm not too sure whether this stems from a desire of preceived grandiosity, an accumulation of bad decisions, or something else enirely, but i felt sick of it all.</p>
     <p><i>also, i am aware that <a href="https://xkcd.com/927/">creating a new Linux distro is a trite idea</a>, but this isn't for you</i>.</p>
 
@@ -37,14 +37,14 @@
 
       <div style="text-align:right;">
         <p>this project is heavily inspired by the <a href="https://suckless.org/philosophy/">suckless philosophy</a> (which i had subconsciously ripped off while writing the first paragraph, apologies) and especially <a href="https://nyght.neocities.org/about">nyght</a>'s excellent <a href="https://nyght.neocities.org/Projects/SFS/suckless-from-scratch">Suckless From Scratch</a>.</p>
-        <p>i also want to draw attention to <a href="https://glaucuslinux.org/">glaucus Linux</a> for its simple package repository system (i.e. <a href="https://github.com/glaucuslinux/core/">core</a>) as i want to implement something similar for the project's planned package manager, lawa <span class="sitelenKuwi">(lawa-)</span> (name probably not final).</p>
+        <p>i also want to draw attention to <a href="https://glaucuslinux.org/">glaucus Linux</a> for its simple package repository system (i.e. <a href="https://github.com/glaucuslinux/core/">core</a>) as i want to implement something similar for the project's planned package manager, lawa (<span class="tokipona">lawa</span>) (name probably not final).</p>
       </div>
     </div>
 
     <h2>departures from GNU/Linux</h2>
     <hr>
 
-    <p>selo <span class="sitelenKuwi">(selo-)</span> Linux is fundamentally opposed to the usage of GNU software. this is due to a myriad of reasons, but it mainly boils down to a pattern of exceedingly long and complex code, superfluous and wordy documentation, and <a href="https://stallman-report.org/">some of Richard Stallman's personal beliefs</a>. this is not to discredit the amazing work that the people at his organisation has done, but GNU software simply isn't a fit for selo <span class="sitelenKuwi">(selo-)</span> Linux.</p>
+    <p>selo (<span class="tokipona">selo</span>) Linux is fundamentally opposed to the usage of GNU software. this is due to a myriad of reasons, but it mainly boils down to a pattern of exceedingly long and complex code, superfluous and wordy documentation, and <a href="https://stallman-report.org/">some of Richard Stallman's personal beliefs</a>. this is not to discredit the amazing work that the people at his organisation has done, but GNU software simply isn't a fit for selo <span class="sitelenKuwi">(selo-)</span> Linux.</p>
     <p>as a result of this (and some other factors), there are going to be major changes from your typical Linux-based operating system, the main one being the use of a Plan 9 user space, provided by <a href="https://9fans.github.io/plan9port/">plan9port</a>.</p>
 
     <div style="overflow:hidden;">
@@ -65,7 +65,7 @@
     <h3>simplified FHS (Filesystem Hierarchy Standard)</h3>
     <hr>
 
-    <p>there is no /usr, /sbin, /media, /run, or /srv directories. this is because selo <span class="sitelenKuwi">(selo-)</span> Linux is primarily an exercise in minimalism and these directories are simply not necessary for the functionality of the system.</p>
+    <p>there is no /usr, /sbin, /media, /run, or /srv directories. this is because selo (<span class="tokipona">selo</span>) Linux is primarily an exercise in minimalism and these directories are simply not necessary for the functionality of the system.</p>
 
     <h2>building the system - prerequisites</h2>
     <hr>

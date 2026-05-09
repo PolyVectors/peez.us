@@ -4,16 +4,16 @@
 }
 
 @font-face {
-  font-family: sitelenKuwi;
-  src: url(fonts/sitelen.Kuwi.otf);
+  font-family: nasin-nanpa;
+  src: url(fonts/nasin-nanpa-4.0.2.otf);
 }
 
 * {
   font-family: VGA;
 }
 
-.sitelenKuwi {
-  font-family: sitelenKuwi;
+.tokipona {
+  font-family: nasin-nanpa;
 }
 
 a {
