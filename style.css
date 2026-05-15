@@ -4,8 +4,8 @@
 }
 
 @font-face {
-  font-family: nasin-nanpa;
-  src: url(fonts/nasin-nanpa-4.0.2.otf);
+  font-family: sitelen-seli-kiwen;
+  src: url(fonts/sitelenselikiwenasuki.ttf);
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 .tokipona {
-  font-family: nasin-nanpa;
+  font-family: sitelen-seli-kiwen;
 }
 
 a {
